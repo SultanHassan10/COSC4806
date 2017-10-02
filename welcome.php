@@ -3,7 +3,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $names = array("Sultan","Salman","Faisal","Mazin");
 $pass = array("1111", "2222", "3333", "4444");
-$NArrlength = sizeof($names);
+$NArrlength = count($names);
 $PArrlength = count($pass);
 
 //for($i = 0; $i < $PArrlength; $i++) {
