@@ -1,4 +1,4 @@
-<h1> Hello There </h1>
+<h1> LOG IN </h1>
 <P1> Please enter your username and password <P1>
 <form action="welcome.php" method="POST">
 <br>username: <input type="text" name="username"/></br>
