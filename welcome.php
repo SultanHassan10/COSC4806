@@ -1,4 +1,7 @@
 <?php
+echo "HELLO";
+
+/*
 $username = $_POST['username'];
 $password = $_POST['password'];
 $names = array("Sultan","Salman","Faisal","Mazin");
@@ -10,7 +13,7 @@ $PArrlength = count($pass);
 	for($j = 0; $j < $NArrlength; $j++) {
 
 	if(($username == $names[$j] AND $password == $pass[$j]) == TRUE){
-	echo "Hello $username, you have successfully logged in!";
+	print_r "Hello $username, you have successfully logged in!";
 	
 }//if statement
 
@@ -20,7 +23,7 @@ $PArrlength = count($pass);
 }//else if statement
 }//second for loop
 //}//first for loop
-
+*/
 ?>
 
 
