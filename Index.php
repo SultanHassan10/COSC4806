@@ -13,20 +13,23 @@ password: <input type="password" name="password"/>
 
 </form>
 <?php
-if(isset($_POST['submit'])){
-$username = $_POST['username'];
-$password = $_POST['password'];
-
+$_SESSION['failed'] = 0; 
+SESSION_start();
+//if(isset($_POST['submit'])){
+//$username = $_POST['username'];
+//$password = $_POST['password'];
 $names = array("Sultan","Salman","Faisal","Mazin");
 $pass = array("1111", "2222", "3333", "4444");
 $NArrlength = count($names);
-$PArrlength = count($pass);
+//$PArrlength = count($pass);
 
 //for($i = 0; $i < $PArrlength; $i++) {
-	for($j = 0; $j < $NArrlength; $j++) {
-
-	if($username == $names[$j] && $password == $pass[$j]){
-	header("location: welcome.php");
+	if (isset($_POST['username']) && isset($_POST['password'])){
+		
+		for($j = 0; $j < $NArrlength; $j++) {
+		if($_POST['username'] == $names[$j] && $_POST['password'] == $pass[$j]){
+			
+		header("location:welcome.php");
 	//echo "HELLO $username";	
 }//if statement
 	else {
@@ -34,6 +37,7 @@ $PArrlength = count($pass);
 	}	
 }//else if statement
 }//second for loop
+
 //}//first for loop
 
 ?>
