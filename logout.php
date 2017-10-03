@@ -1,7 +1,8 @@
 <?php
 
 SESSION_start();
-$_SESSION['login'] = false;
+SESSION_destroy();
+$_SESSION['isauthenticated'] = false;
 header("Location: index.php");
 
 ?>
