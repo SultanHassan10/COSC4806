@@ -1,6 +1,13 @@
 <h1> LOG IN </h1>
 <P1> Please enter your username and password <P1>
 <body>
+<?php
+SESSION_start();
+if(isset($_SESSION['isauthenticated'])){
+	header("location:welcome.php");
+}
+?>
+
 <form action="index.php" method="POST"><br>
 Username: <input type="text" name="username"/></br>
 Password: <input type="password" name="password"/></br></br>
@@ -9,7 +16,6 @@ Password: <input type="password" name="password"/></br></br>
 
 </form>
 <?php
-SESSION_start();
 $_SESSION['failed'] = 0; 
 
 $names = array("Sultan","Salman","Faisal","Mazin");
