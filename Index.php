@@ -5,13 +5,12 @@
 Username: <input type="text" name="username"/></br>
 Password: <input type="password" name="password"/></br></br>
 <input type="submit" name ="login" value="Log in"/>
-<input type="submit" name = "faildAttempts" value="number of faild attempts"/>
+<input type="submit" name = "failedAttempts" value="number of failed attempts"/>
 
 </form>
 <?php
 SESSION_start();
-
-$_SESSION['faild'] = 0; 
+$_SESSION['failed'] = 0; 
 
 $names = array("Sultan","Salman","Faisal","Mazin");
 $pass = array("1111", "2222", "3333", "4444");
@@ -25,18 +24,19 @@ $NArrlength = count($names);
 		header("location:welcome.php");	
 }//if statement
 	else {
-		$_SESSION['isauthenticated'] = false;
-		$_SESSION['faild'] = $_SESSION['faild'] + 1;
-	}	
-}//else if statement
-
-}
-	if(isset($_POST['faildAttempts'])){
-		echo "number of invalid info attempts ".$_SESSION['faild'];
-	}
+	//	$_SESSION['isauthenticated'] = false;
+		echo "invalid password or username";
+			//$_SESSION['faild'] = ($_SESSION['faild']=+1);
+			$_SESSION['failed']++;
+		die();
 	
+	}	
+	}
 
-
+}//else if statement
+	if(isset($_POST['failedAttempts'])){
+		echo "number of invalid info attempts ".$_SESSION['failed'];
+	}
 ?>
 
 
