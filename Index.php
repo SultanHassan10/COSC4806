@@ -16,7 +16,9 @@ Password: <input type="password" name="password"/></br></br>
 
 </form>
 <?php
+if (!isset($_SESSION['failed'])){
 $_SESSION['failed'] = 0; 
+}
 
 $names = array("Sultan","Salman","Faisal","Mazin");
 $pass = array("1111", "2222", "3333", "4444");
