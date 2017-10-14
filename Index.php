@@ -1,21 +1,25 @@
 <h1> LOG IN </h1>
 <P1> Please enter your username and password <P1>
 <body>
-<?php
-SESSION_start();
-if(isset($_SESSION['isauthenticated'])){
-	header("location:welcome.php");
-}
-?>
 
 <form action="index.php" method="POST"><br>
 Username: <input type="text" name="username"/></br>
 Password: <input type="password" name="password"/></br></br>
 <input type="submit" name ="login" value="Log in"/>
 <input type="submit" name = "failedAttempts" value="number of failed attempts"/>
-
 </form>
+
+<P2> please register if you don't have username and password <P2>
+<form action="registeration.php" method="POST"><br>
+<input type="submit" name ="register" value="REGISTER"/>
+</form>
+
 <?php
+SESSION_start();
+if(isset($_SESSION['isauthenticated'])){
+	header("location:welcome.php");
+}
+
 if (!isset($_SESSION['failed'])){
 $_SESSION['failed'] = 0; 
 }
