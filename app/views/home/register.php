@@ -14,12 +14,26 @@
             <form class="form-horizontal" action="/login/register" method="post">
 			    <fieldset>
 					<div class="form-group">
-Username: <input type="text" name="username"/></br>
-Password: <input type="password" name="password"/></br>
-Email: <input type="text" name="email"/></br>
-<input type="submit" name ="register" value="Register!"/>
-<input type="submit" name = "cancel" value="Cancel"/>
-</form>
-
+					  <label for="username" class="col-lg-2 control-label">New Username</label>
+					  <div class="col-lg-10">
+						<input type="text" class="form-control" name="username" placeholder="Username">
+					  </div>
+					</div>
+					<div class="form-group">
+					  <label for="password" class="col-lg-2 control-label">New Password</label>
+					  <div class="col-lg-10">
+						<input type="password" class="form-control" name="password" placeholder="Password">
+					  </div>
+					</div>
+					<div class="form-group">
+					  <div class="col-lg-10 col-lg-offset-2">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					  </div>
+					</div>
+			    </fieldset>
+			</form>
+			<a href="/login/register"> Sign up here </a>
+        </div>
+    </div>
 
     <?php require_once '../app/views/templates/footer.php' ?>

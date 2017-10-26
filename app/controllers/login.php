@@ -3,26 +3,20 @@
 class Login extends Controller {
     public function index() {
         $user = $this->model('User');
-//my code
-        	if(isset($_POST['login'])){
-		for($j = 0; $j < $NArrlength; $j++) {
-		if($_POST['username'] == $names[$j] && $_POST['password'] == $pass[$j]){
-			$_SESSION['user'] = $_POST['username'];
-			$_SESSION['pass'] = $_POST['password'];
-			$_SESSION['isauthenticated'] = true;
-		header("location:welcome.php");	
-}//if statement
-	else {
-	//	$_SESSION['isauthenticated'] = false;
-		echo "invalid password or username";
-			//$_SESSION['faild'] = ($_SESSION['faild']=+1);
-			$_SESSION['failed']++;
-		die();
-	
-	}	
-	}
 
-}//else if statement
+        if (isset($_POST['username'])) {
+            $user->username = $_POST['username'];
+        }
+
+        if (isset($_POST['password'])) {
+            $user->password = $_POST['password'];
+        }
+
+        $user->authenticate();
+
+        if ($user->auth == TRUE) {
+            $_SESSION['auth'] = true;
+        }
         
         header('Location: /home');
     }
