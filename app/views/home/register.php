@@ -8,5 +8,6 @@ Password: <input type="password" name="password"/></br>
 Email: <input type="text" name="email"/></br>
 <input type="submit" name ="register" value="Register!"/>
 <input type="submit" name = "cancel" value="Cancel"/>
+<a href="../app/views/login.php"> login page</a>
 </form>
     <?php require_once '../app/views/templates/footer.php' ?>
