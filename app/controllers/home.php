@@ -5,11 +5,7 @@ class Home extends Controller {
     public function index($name = '') {		
         $user = $this->model('User');
 		
-		if (strtolower($_SESSION['name']) == 'mike') {
-			$message = 'You are awesome';
-		} else {
-			$message = 'You suck';
-		}
+		$message = 'Hello '.$_SESSION['user'].', welcome to your page, your password is '.$_SESSION['pass'].'Today date is: '.date("d/m/y");
 		
         $this->view('home/index', ['message' => $message]);
     }

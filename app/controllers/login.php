@@ -23,15 +23,23 @@ class Login extends Controller {
 	
 	public function register () {
 		$user = $this->model('User');
+
+		$this->view('home/register');	
 		
-		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if(isset($_POST[register])){
 			$username = $_POST['username'];
-			$password = $_POST['password'];
-			
-			$user->register($username, $password);
-			$_SESSION['auth'] = true;
+			$passwor = $_POST['password'];
+			$email = $_POST['email'];
+
+			if ($password < 8){
+				echo 'must be 8 characters or more';
+				die();
+			}
+			$hash = password_hash($password, PASSWORD_DEFAULT);
+			$user->register($username, $hash, $email);
+			//$_SESSION['auth'] = true;
 		}
 		
-		$this->view('home/register');
+
 	}
 }

@@ -31,13 +31,20 @@ class User {
 		}
     }
 	
-	public function register ($username, $password) {
-		$db = db_connect();
-        $statement = $db->prepare("INSERT INTO users (name)"
-                . " VALUES (:name); ");
-
-        $statement->bindValue(':name', $username);
-        $statement->execute();
+	public function register ($username, $password, $email) {
+		//$db = db_connect();
+		try{
+		$db = new PDO('mysql:127.0.0.1;=$servername;dbname=cosc', 'root', '');
+		$insert = $db->prepare("INSERT INTO users(username, password, email) VALUES (:username,:password,:email)");
+		$insert->bindParam('username',$username);
+		$insert->bindParam('password',$password);
+		$insert->bindParam('email',$email);
+		$insert->excute();
+		}
+		catch(PDOException $e){
+			echo $sql . "<br>" . $e->getMessage();
+		}
+		$db = null;
 
 	}
 
