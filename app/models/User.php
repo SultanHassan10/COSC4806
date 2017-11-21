@@ -18,9 +18,10 @@ class User {
 		 
 		$db = db_connect();
         $statement = $db->prepare("select * from users
-                                WHERE name = :name;
+                                WHERE name = :name and password = :password;
                 ");
         $statement->bindValue(':name', $this->username);
+        $statement->bindValue(':password', $this->password);
         $statement->execute();
         $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
 		
@@ -31,15 +32,32 @@ class User {
 		}
     }
 	
-	public function register ($username, $password, $email) {
+	public function register ($username, $password) 
+	{
 		$db = db_connect();
-		$insert = $db->prepare("INSERT INTO users(username, password, email) VALUES (:username,:password,:email)");
-		$insert->bindParam('username',$username);
-		$insert->bindParam('password',$password);
-		$insert->bindParam('email',$email);
-		$insert->excute();
-		
+		 $statement = $db->prepare("select * from users
+                                WHERE name = :name;
+                ");
+        $statement->bindValue(':name', $username);
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+		if($rows)
+		{
+			session_start();
+			$_SESSION['message'] = "User Alread Exist.";
+		}
+		else
+		{
+        $statement = $db->prepare("INSERT INTO users (name,password)"
+                . " VALUES (:name,:password); ");
 
+        $statement->bindValue(':name', $username);
+        $statement->bindValue(':password', md5($password));
+        $statement->execute();
+		session_start();
+		$_SESSION['message'] = "You have successfully register, please go to Login page.";
+		}
+		
 	}
 
 }
