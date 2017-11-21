@@ -1,6 +1,6 @@
 <?php
 
- $DB_HOST = "locahost";
+ $DB_HOST = "127.0.0.1";
  $DB_DATABASE = "cosc";
  $DB_USER = "root";
  $DB_PASS= "";
